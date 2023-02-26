@@ -12,6 +12,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  console.log('PARSE_APP_ID: ')
+  console.log(process.env.PARSE_APP_ID)
+  console.log('PARSE_REST_KEY: ')
+  console.log(process.env.PARSE_REST_KEY)
   // const response = await axios
   //     .request({
   //       url: `https://api.agify.io?name=michael`,

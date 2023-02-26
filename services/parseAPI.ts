@@ -18,7 +18,7 @@ const mountHeaders = (token?: string, customHeaders: any = {}) =>
     }
 
 const parseAPI = {
-  post: (url: string, data: any, token?: string, customHeaders: any = {}) => axios({
+  post: async (url: string, data: any, token?: string, customHeaders: any = {}) => await axios({
     method: 'post',
     url: `https://parseapi.back4app.com/${url}`,
     data,
