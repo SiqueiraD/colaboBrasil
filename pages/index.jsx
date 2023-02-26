@@ -7,6 +7,8 @@ import axios from 'axios';
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+
 export default function Home() {
   const [signUp, setSignUp] = useState(0);
 
@@ -17,7 +19,7 @@ export default function Home() {
     const userAuthen = await (await axios.post('/api/user/auth', { usernameValue, passwordValue })).data
     console.log(userAuthen)
     if (!!userAuthen)
-      window.location.href = `/app/${userAuthen.sessionToken}`
+      window.location.href = `/app`
   };
 
   const cadastrarNovo = async function (a) {
@@ -26,6 +28,8 @@ export default function Home() {
     const passwordValue = a.password;
     const userAuthen = await (await axios.post('/api/user/access', { usernameValue, passwordValue })).data
     console.log(userAuthen)
+    if (!!userAuthen)
+      window.location.href = `/app`
   };
 
   return (
