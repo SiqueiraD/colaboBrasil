@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import React, { useState } from 'react';
 import axios from 'axios';
+import useUser from '@/lib/useUser'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,6 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [signUp, setSignUp] = useState(0);
+  const { user } = useUser({ redirectTo: '/app', redirectIfFound: true})
 
   const fazerLogin = async function (a) {
     // Note that these values come from state variables that we've declared before

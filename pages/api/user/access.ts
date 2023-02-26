@@ -13,7 +13,7 @@ async function signUpRoute(
         'X-Parse-Revocable-Session': 1,
         'Content-Type':'application/json'
     });
-    const user: User = criarUsuario.data
+    const user: User = await parseAPI.get('users/me', null, undefined, {'X-Parse-Session-Token':  criarUsuario.data.sessionToken}).then((req: any) => req.data)
     req.session.user = user
     await req.session.save()
 

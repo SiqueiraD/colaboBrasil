@@ -1,17 +1,17 @@
 import LayoutApp from '@/components/LayoutApp'
-import useUser from 'lib/useUser'
+import useUser from '@/lib/useUser'
+import axios from 'axios'
 
 const PublicApp = () => {
-  const { user } = useUser({
-    redirectIfFound: false
-  })
+  const { user } = useUser()
   
 
   return (
     <LayoutApp>
       <div>
-        {user ? user.username : 'id'}
         <button onClick={()=> console.log(user)}>ok</button>
+        <button onClick={()=> !!user?.sessionToken ? axios({method:'get', url:'/api/user/logout'}).finally(() => window.location.href = '/app') : window.location.href = '/'}>
+        {!!user?.sessionToken ?'Logout': 'Login'}</button>
       </div>
     </LayoutApp>
   )
